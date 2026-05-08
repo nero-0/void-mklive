@@ -149,7 +149,7 @@ jobs:
         run: |
           make dist DATECODE="${{ needs.prepare.outputs.datecode }}"
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: void-iso-${{ matrix.arch }}-${{ matrix.flavor }}-${{ needs.prepare.outputs.datecode }}
           path: |
@@ -194,7 +194,7 @@ jobs:
         run: |
           make dist DATECODE="${{ needs.prepare.outputs.datecode }}"
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: void-rootfs-${{ matrix.arch }}-${{ needs.prepare.outputs.datecode }}
           path: |
@@ -239,7 +239,7 @@ jobs:
         run: |
           make dist DATECODE="${{ needs.prepare.outputs.datecode }}"
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: void-platformfs-${{ matrix.platform }}-${{ needs.prepare.outputs.datecode }}
           path: |
@@ -285,7 +285,7 @@ jobs:
         run: |
           make dist DATECODE="${{ needs.prepare.outputs.datecode }}"
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: void-sbc-img-${{ matrix.platform }}-${{ needs.prepare.outputs.datecode }}
           path: |
@@ -332,7 +332,7 @@ jobs:
         run: |
           make dist DATECODE="${{ needs.prepare.outputs.datecode }}"
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: void-wsl-${{ matrix.arch }}-${{ needs.prepare.outputs.datecode }}
           path: |
@@ -367,7 +367,7 @@ jobs:
         uses: classabbyamp/treeless-checkout-action@v1
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           path: distdir-${{ needs.prepare.outputs.datecode }}
           merge-multiple: true
@@ -376,7 +376,7 @@ jobs:
           make checksum DATECODE="${{ needs.prepare.outputs.datecode }}"
       - name: Upload artifacts
         id: upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: void-live-${{ needs.prepare.outputs.datecode }}
           path: |
